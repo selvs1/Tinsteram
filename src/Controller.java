@@ -173,6 +173,14 @@ public class Controller implements Observer {
         slideImportant.setValue(0);
     }
 
+    private void updateView_View() {
+        User chosenUser = (User)model.list.get(0);
+        lblDate.setText("####");
+        lblUsername.setText(chosenUser.getUsername());
+        lblName.setText(chosenUser.getName());
+        lblStatus.setText(String.format("%f%", chosenUser.getOwnTimer().getTime()));
+    }
+
 
 
     @Override

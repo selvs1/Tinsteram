@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class Main extends Application {
 
@@ -26,12 +27,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setTitle("Tinsteram");
         stage.show();
-
-
-
-
-
-
 
     }
 }

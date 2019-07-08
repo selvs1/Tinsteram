@@ -33,6 +33,37 @@ public class User implements Serializable, Observer {
         ownTimer.addObserver(this);
     }
 
+    public Image getUserPic() {
+        return userPic;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public int getImportant() {
+        return important;
+    }
+
+    public Stopwatch getOwnTimer() {
+        return ownTimer;
+    }
 
     @Override
     public String toString() {

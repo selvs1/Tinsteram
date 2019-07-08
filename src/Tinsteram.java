@@ -10,7 +10,7 @@ public class Tinsteram implements Observer{
     private String name;
     private String description;
     private String notes;
-    private List<User> list;
+    public ArrayList<User> list;
     private PriorityQueue<User> pqList;
     private String DATA_FILE = ".userdata";
 
@@ -41,7 +41,7 @@ public class Tinsteram implements Observer{
 
     public void loadData() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(DATA_FILE))) {
-            list = (List<User>)in.readObject();
+            list = (ArrayList<User>)in.readObject();
         } catch (IOException e) {
             System.out.println(e);
         } catch (ClassNotFoundException e) {
