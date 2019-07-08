@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -43,6 +42,8 @@
                         <Label layoutX="362.0" layoutY="278.0" text="important" />
                         <TextField fx:id="tfPriority" layoutX="350.0" layoutY="145.0" prefHeight="25.0" prefWidth="44.0" text="0" />
                         <TextField fx:id="tfImportant" layoutX="350.0" layoutY="186.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <Label layoutX="415.0" layoutY="149.0" text="running time:" />
+                        <Label fx:id="lblRunningTime" layoutX="502.0" layoutY="149.0" text="mm:ss" />
                      </children>
                   </Pane>
                </content>
@@ -67,6 +68,8 @@
                         <RadioButton fx:id="rdDE" layoutX="421.0" layoutY="288.0" mnemonicParsing="false" text="DE" />
                         <RadioButton fx:id="rdEN" layoutX="470.0" layoutY="288.0" mnemonicParsing="false" text="EN" />
                         <RadioButton fx:id="rdFR" layoutX="363.0" layoutY="288.0" mnemonicParsing="false" text="FR" />
+                        <Label layoutX="370.0" layoutY="98.0" text="watching time:" />
+                        <Label fx:id="lblWatchingTime" layoutX="474.0" layoutY="98.0" text="mm:ss" />
                      </children>
                   </Pane>
                </content>

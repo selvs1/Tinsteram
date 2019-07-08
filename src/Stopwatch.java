@@ -8,7 +8,7 @@ public class Stopwatch extends Observable implements Runnable{
     private Thread thread;
 
 
-    private Stopwatch(int interval) {
+    public Stopwatch(int interval) {
         this.interval = interval;
     }
 

@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -10,14 +11,25 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Stop;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
-public class Controller {
+import java.io.File;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Controller implements Observer {
+
 
     private Tinsteram model;
     private int defaultValue = 0;
+    private Image img;
     private IntegerProperty sliderValuePriority = new SimpleIntegerProperty(defaultValue);
     private IntegerProperty sliderValueImportant = new SimpleIntegerProperty(defaultValue);
+    private Stopwatch mainTimer;
 
     @FXML
     private ImageView img1;
@@ -95,14 +107,26 @@ public class Controller {
     private ListView<User> listView;
 
     @FXML
+    private Label lblRunningTime;
+
+
+
+    @FXML
     public void clickAdd(ActionEvent event) {
-        model.addUser(tfUsername.getText(), tfName.getText(), tfDescription.getText(), taNotes1.getText(), (int)slidePriority.getValue(), (int)slideImportant.getValue());
+        model.addUser(tfUsername.getText(), tfName.getText(), tfDescription.getText(), taNotes1.getText(), (int) slidePriority.getValue(), (int) slideImportant.getValue(), img);
         updateView();
     }
 
     @FXML
     void clickAddPic(ActionEvent event) {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Bild auswählen");
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
+            System.out.println(file);
+            img = new Image(file.toURI().toString());
+            img1.setImage(img);
+        }
     }
 
     @FXML
@@ -117,6 +141,9 @@ public class Controller {
 
     @FXML
     public void init(Tinsteram model) {
+        mainTimer = new Stopwatch(10);
+        mainTimer.addObserver(this);
+        mainTimer.start();
         this.model = model;
         this.model.loadData();
         updateView();
@@ -144,5 +171,16 @@ public class Controller {
         taNotes1.clear();
         slidePriority.setValue(0);
         slideImportant.setValue(0);
+    }
+
+
+
+    @Override
+    public void update(Observable o, Object arg) {
+//        this.model.mainTimer.getSeconds();
+        Platform.runLater(() -> {
+            lblRunningTime.setText(String.format("%02d:%02d:%02d", (mainTimer.getSeconds()/3600)%60, mainTimer.getSeconds()%60, (int)(mainTimer.getTime()*100)%100));
+        });
+
     }
 }

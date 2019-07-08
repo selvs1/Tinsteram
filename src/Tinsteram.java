@@ -1,11 +1,9 @@
 import javafx.scene.image.Image;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
-public class Tinsteram {
+public class Tinsteram implements Observer{
 
     private Image pic1;
     private String username;
@@ -21,10 +19,11 @@ public class Tinsteram {
     }
 
 
-    public void addUser(String username, String name, String description, String notes, int priority, int important) {
-        list.add(new User(username, name, description, notes, priority, important));
+    public void addUser(String username, String name, String description, String notes, int priority, int important, Image userPic) {
+        list.add(new User(username, name, description, notes, priority, important, userPic));
         saveData();
     }
+
 
     public List<User> getData() {
         return list;
@@ -48,8 +47,10 @@ public class Tinsteram {
         } catch (ClassNotFoundException e) {
             System.out.println(e);
         }
-
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
 
+    }
 }

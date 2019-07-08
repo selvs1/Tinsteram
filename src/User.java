@@ -1,9 +1,12 @@
 import javafx.scene.image.Image;
+import javafx.scene.paint.Stop;
 
 import java.io.Serializable;
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class User implements Serializable {
+public class User implements Serializable, Observer {
     private Image userPic;
     private String username;
     private String name;
@@ -11,20 +14,23 @@ public class User implements Serializable {
     private String notes;
     private int priority;
     private int important;
-    private Stopwatch timer;
+    private final Stopwatch ownTimer;
 
     // Ich erstelle ein User. Immer wenn ich den User wechsle dann drücke ich vorher noch auf
     // startTimer (neuen User) und stopTimer (beim alten User)
 
 
-    public User(String username, String name, String description, String notes, int priority, int important) {
+    public User(String username, String name, String description, String notes, int priority, int important, Image userPic) {
         this.username = username;
         this.name = name;
         this.description = description;
         this.notes = description;
         this.priority = priority;
         this.important = important;
+        this.userPic = userPic;
         System.out.println("done");
+        ownTimer = new Stopwatch(10);
+        ownTimer.addObserver(this);
     }
 
 
@@ -32,5 +38,11 @@ public class User implements Serializable {
     public String toString() {
         String output = String.format("[username: %20s , name: %20s , description: %20s ]", username, name, description);
         return output;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+
     }
 }
