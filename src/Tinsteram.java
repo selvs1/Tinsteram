@@ -6,6 +6,7 @@ import java.util.*;
 public class Tinsteram implements Observer{
 
     private Image pic1;
+    private String dbPath;
     private String username;
     private String name;
     private String description;
@@ -36,7 +37,6 @@ public class Tinsteram implements Observer{
         } catch (IOException e) {
             System.out.println("Problem: " + e);
         }
-
     }
 
     public void loadData() {
@@ -47,6 +47,10 @@ public class Tinsteram implements Observer{
         } catch (ClassNotFoundException e) {
             System.out.println(e);
         }
+    }
+
+    public void newDataBase() {
+
     }
 
     @Override

@@ -16,6 +16,7 @@ public class User implements Serializable, Observer {
     private int important;
     private final Stopwatch ownTimer;
 
+
     // Ich erstelle ein User. Immer wenn ich den User wechsle dann drücke ich vorher noch auf
     // startTimer (neuen User) und stopTimer (beim alten User)
 
@@ -24,7 +25,7 @@ public class User implements Serializable, Observer {
         this.username = username;
         this.name = name;
         this.description = description;
-        this.notes = description;
+        this.notes = notes;
         this.priority = priority;
         this.important = important;
         this.userPic = userPic;

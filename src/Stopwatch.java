@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Timer;
 
-public class Stopwatch extends Observable implements Runnable{
+public class Stopwatch extends Observable implements Runnable, Serializable {
     private int ticks;
     private int interval;
 
@@ -64,5 +65,4 @@ public class Stopwatch extends Observable implements Runnable{
             }
         }
     }
-
 }

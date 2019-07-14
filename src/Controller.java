@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Stop;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,8 +22,8 @@ import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Controller implements Observer {
 
+public class Controller implements Observer {
 
     private Tinsteram model;
     private int defaultValue = 0;
@@ -127,6 +128,17 @@ public class Controller implements Observer {
             img = new Image(file.toURI().toString());
             img1.setImage(img);
         }
+    }
+
+    @FXML
+    void clickMnNew(ActionEvent event) {
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle("JavaFX Projects");
+//        File defaultDirectory = new File("C:\\Users\\blallblaPunde\\IdeaProjects");
+        File defaultDirectory = new File("C:/");
+        chooser.setInitialDirectory(defaultDirectory);
+        File selectedDirectory = chooser.showDialog(new Stage());
+        System.out.println(selectedDirectory);
     }
 
     @FXML
